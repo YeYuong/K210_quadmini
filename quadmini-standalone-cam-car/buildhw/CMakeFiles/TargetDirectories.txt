@@ -1,0 +1,6 @@
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/CMakeFiles/rebuild_cache.dir
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/CMakeFiles/edit_cache.dir
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/CMakeFiles/hello_world.dir
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/lib/CMakeFiles/rebuild_cache.dir
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/lib/CMakeFiles/edit_cache.dir
+/home/asdf/Projects/Quadmini/quadmini-standalone-mc/buildhw/lib/CMakeFiles/kendryte.dir

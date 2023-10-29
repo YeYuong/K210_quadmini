@@ -1,0 +1,6 @@
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles/rebuild_cache.dir
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles/edit_cache.dir
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles/quadmini.dir
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/lib/CMakeFiles/rebuild_cache.dir
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/lib/CMakeFiles/edit_cache.dir
+/home/yyl/K210-project/quadmini-standalone-cam-car/build/lib/CMakeFiles/kendryte.dir
