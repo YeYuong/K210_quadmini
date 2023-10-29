@@ -1,0 +1,28 @@
+{
+    "files.associations": {
+        "io_func.h": "c",
+        "motor.h": "c",
+        "contorl.h": "c",
+        "printf.h": "c",
+        "uart.h": "c",
+        "task.h": "c",
+        "motioncap.h": "c",
+        "imu.h": "c",
+        "led.h": "c",
+        "sysctl.h": "c",
+        "gpio.h": "c",
+        "utils.h": "c",
+        "commander.h": "c",
+        "w25qxx.h": "c",
+        "param.h": "c",
+        "control.h": "c",
+        "vl53l1x.h": "c",
+        "sleep.h": "c",
+        "rotors.h": "c",
+        "math.h": "c",
+        "ota.h": "c",
+        "stdio.h": "c",
+        "pmw3901mb.h": "c"
+    },
+    "cmake.configureOnOpen": true
+}
