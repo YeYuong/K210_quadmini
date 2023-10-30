@@ -11,6 +11,8 @@ spi接口
 #include <gpiohs.h>
 #include <sleep.h>
 #include <spi.h>
+#include <spi_sw.h>
+#include <sysctl.h>
 
 
 float BMI088_ACCEL_SEN = BMI088_ACCEL_24G_SEN;
@@ -21,48 +23,76 @@ float BMI088_GYRO_SEN = BMI088_GYRO_2000_SEN;
 #define BMI088_delay_ms(ms) msleep(ms)
 #define BMI088_delay_us(us) usleep(us)
 
-void BMI088_accel_write_single_reg(uint8_t reg,uint8_t data)
+void BMI088_accel_write_single_reg(uint8_t reg, uint8_t data)
 {
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_send_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 1, &data, 1);
+#else
+	spi_sw_send_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 1, &data, 1);
+#endif
 }
 //注意：ACCEL在读取寄存器时需要跳过返回的第一个字节
 void BMI088_accel_read_single_reg(uint8_t reg, uint8_t *data)
 {
 	reg |= 0x80;
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_receive_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 2, data, 1);
+#else
+	spi_sw_receive_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 2, data, 1);
+#endif
 	// uint8_t data_buf[2];
 	// spi_receive_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 1, data_buf, 2);
 	// printf("readreg:%02X %02X\n", data_buf[0], data_buf[1]);
 	// *data = data_buf[1];
 }
 
-void BMI088_accel_read_muli_reg(uint8_t reg,uint8_t *data,uint8_t len)
+void BMI088_accel_read_muli_reg(uint8_t reg, uint8_t *data, uint8_t len)
 {
 	reg |= 0x80;
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_receive_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 2, data, len);
+#else
+	spi_sw_receive_data_standard(BMI088_USE_SPI, CS_ACCEL, &reg, 2, data, len);
+#endif
+    
 }
 
-void BMI088_gyro_write_single_reg(uint8_t reg,uint8_t data)
+void BMI088_gyro_write_single_reg(uint8_t reg, uint8_t data)
 {
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_send_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, &data, 1);
+#else
+	spi_sw_send_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, &data, 1);
+#endif
+    
 }
 
-void BMI088_gyro_read_single_reg(uint8_t reg,uint8_t *data)
+void BMI088_gyro_read_single_reg(uint8_t reg, uint8_t *data)
 {
 	reg |= 0x80;
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_receive_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, data, 1);
+#else
+	spi_sw_receive_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, data, 1);
+#endif
+    
 }
 
-void BMI088_gyro_read_muli_reg(uint8_t reg,uint8_t *data,uint8_t len)
+void BMI088_gyro_read_muli_reg(uint8_t reg,uint8_t *data, uint8_t len)
 {
 	reg |= 0x80;
+#ifndef USE_SOFTWARE_SPI
 	spi_set_clk_rate(BMI088_USE_SPI, BMI_SPI_RATE);
 	spi_receive_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, data, len);
+#else
+	spi_sw_receive_data_standard(BMI088_USE_SPI, CS_GYRO, &reg, 1, data, len);
+#endif
+    
 }
 
 //end of middleware
@@ -103,8 +133,13 @@ static uint8_t write_BMI088_gyro_reg_data_error[BMI088_WRITE_GYRO_REG_NUM][3] =
 
 //使用spi硬件片选引脚
 void bmi_spi_init(void) {
+#ifndef USE_SOFTWARE_SPI
 	spi_init(BMI088_USE_SPI, SPI_WORK_MODE_0, SPI_FF_STANDARD, 8, 0);  // SPI0
 	spi_set_clk_rate(BMI088_USE_SPI, 200000);//BMI_SPI_RATE);
+#else
+    spi_sw_init();
+#endif
+    msleep(1);
 }
 
 uint8_t BMI088_init(void) {
@@ -248,10 +283,10 @@ int bmi088_accel_self_test(void) {
 
     // while (1) // debug BMI@asdf
     // {
-        /* code */
+    //     /* code */
 	BMI088_accel_read_single_reg(BMI088_ACC_CHIP_ID, &res);
 	BMI088_delay_us(BMI088_COM_WAIT_SENSOR_TIME);
-    // printf("%02X\n", res);
+    // printf("acc:%02X\n", res);
     // }
 
 	BMI088_accel_read_single_reg(BMI088_ACC_CHIP_ID, &res);
@@ -349,10 +384,12 @@ int bmi088_gyro_self_test(void) {
 
     // while (1) // debug BMI@asdf
     // {
-        /* code */
+    //     /* code */
 	BMI088_gyro_read_single_reg(BMI088_GYRO_CHIP_ID, &res);
 	BMI088_delay_us(BMI088_COM_WAIT_SENSOR_TIME);
-    // printf("%02X\n", res);
+    // printf("gyro:%02X\n", res);
+    // if(res == 0x0F)
+    //     break;
     // }
 
 	BMI088_gyro_read_single_reg(BMI088_GYRO_CHIP_ID, &res);

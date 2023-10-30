@@ -145,6 +145,12 @@ void flight_status_control(struct ctrl_data_ty * body_ctrl, struct remote_ctrl_t
 			lock_motor();
 		}
 	} else if (body_ctrl->flight_status == FLIGHT_ACCELERATE) {	/* 电机加速至悬停油门 */
+        if(global_data.flags.ready_to_takeoff + global_data.flags.use_motioncap_data <= 0) // 检测起飞条件
+        { // imu初始化失败时ready_to_takeoff为-1，即使有动捕也不允许起飞；光流和TOF故障时无法直接起飞，若动捕信息接入则允许起飞
+            global_data.flags.use_commander = 0;
+			body_ctrl->flight_status = FLIGHT_LOCKED;
+            return;
+        }
 		body_ctrl->thr += body_ctrl->thr_hover / (1.0 /*秒*/ / dt);
 		rgb_set(0, (uint8_t)(int)body_ctrl->thr, 0);
 		if (body_ctrl->thr >= body_ctrl->thr_hover) {
@@ -181,7 +187,7 @@ void flight_status_control(struct ctrl_data_ty * body_ctrl, struct remote_ctrl_t
 		}
 	} else if (body_ctrl->flight_status == FLIGHT_LANDING) {	/* 降落：启动高度速度环缓慢下降，小于5cm落下 */
 		body_ctrl->height_speed_ctrl.expect_height_speed = -0.25;
-		if ( (remote_ctrl->lock_btn == 1) || (ob_height <= 0.05) || getTOFHeight() <= 0.05) {
+		if ( (remote_ctrl->lock_btn == 1) || (ob_height <= 0.05) || (getTOFHeight() <= 0.05 && getTOFHeight() > 0.0) || (global_data.flags.use_motioncap_data == 0 && getTOFHeight() <= 0.05)) {
 			body_ctrl->flight_status = FLIGHT_LOCKED;
 			lock_motor();
 			ctrl_reset(&global_data.body_ctrl);
@@ -310,6 +316,7 @@ void height_ctrl(struct ctrl_data_ty * body_ctrl,struct data_fusion_ty * body_da
 
 	//从遥控器获取期望高度
 	float exp_height_speed = remote_ctrl->throttle * 0.4;
+	if (fabs(remote_ctrl->throttle) < 0.01)  exp_height_speed = 0.0;
 	height_ctrl->expect_height += exp_height_speed * dt;
 
 	if(global_data.flags.use_motioncap_data)
@@ -353,7 +360,10 @@ void height_speed_ctrl(struct ctrl_data_ty * body_ctrl, struct data_fusion_ty * 
 
 	if(body_ctrl->flight_status == FLIGHT_FLYING)
 		height_speed_ctrl->expect_height_speed = body_ctrl->height_ctrl.out_height_speed;
-	// height_speed_ctrl->expect_height_speed = remote_ctrl->throttle * 0.4;
+		// height_speed_ctrl->expect_height_speed = remote_ctrl->throttle * 0.4;
+	
+	// if(fabs(remote_ctrl->throttle) < 0.01)   height_speed_ctrl->expect_height_speed = 0.0;
+
 
 	//计算高度速度误差
 	height_speed_ctrl->height_speed_err = height_speed_ctrl->expect_height_speed - _height_speed_est;
@@ -403,12 +413,12 @@ void xy_speed_ctrl(struct ctrl_data_ty * body_ctrl, struct data_fusion_ty * body
     static float y_err_lpf = 0.0;
     x_err_lpf += 0.4*(x_speed_ctrl->x_speed_err - x_err_lpf);
     y_err_lpf += 0.4*(y_speed_ctrl->y_speed_err - y_err_lpf);
-    global_data.debug_data = y_err_lpf;
+    // global_data.debug_data = y_err_lpf;
     global_data.motor_current = y_speed_ctrl->y_speed_err;
 
 	//计算速度误差微分
-	x_speed_ctrl->x_speed_err_d = x_speed_ctrl->pid_param.kd * (x_err_lpf - x_speed_ctrl->old_x_speed_err);
-	y_speed_ctrl->y_speed_err_d = y_speed_ctrl->pid_param.kd * (y_err_lpf - y_speed_ctrl->old_y_speed_err);
+	x_speed_ctrl->x_speed_err_d = x_speed_ctrl->pid_param.kd * (x_err_lpf - x_speed_ctrl->old_x_speed_err) ;//  /dt;
+	y_speed_ctrl->y_speed_err_d = y_speed_ctrl->pid_param.kd * (y_err_lpf - y_speed_ctrl->old_y_speed_err) ;//  /dt;
 
 	//计算速度误差积分
 	x_speed_ctrl->x_speed_err_i += x_speed_ctrl->pid_param.ki * x_speed_ctrl->x_speed_err * dt;
@@ -456,8 +466,8 @@ void xy_position_ctrl(struct ctrl_data_ty * body_ctrl, struct data_fusion_ty * b
     y_err_lpf += 0.3*(y_posi_ctrl->y_posi_err - y_err_lpf);
     
 	//计算位置误差微分
-	x_posi_ctrl->x_posi_err_d = x_posi_ctrl->pid_param.kd * (x_err_lpf - x_posi_ctrl->old_x_posi_err);
-	y_posi_ctrl->y_posi_err_d = y_posi_ctrl->pid_param.kd * (y_err_lpf - y_posi_ctrl->old_y_posi_err);
+	x_posi_ctrl->x_posi_err_d = x_posi_ctrl->pid_param.kd * (x_err_lpf - x_posi_ctrl->old_x_posi_err) ; //  /dt;
+	y_posi_ctrl->y_posi_err_d = y_posi_ctrl->pid_param.kd * (y_err_lpf - y_posi_ctrl->old_y_posi_err) ; //  /dt;
 
 	//计算位置误差积分
 	x_posi_ctrl->x_posi_err_i += x_posi_ctrl->pid_param.ki * x_posi_ctrl->x_posi_err * dt;

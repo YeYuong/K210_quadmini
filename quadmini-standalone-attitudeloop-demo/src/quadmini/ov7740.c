@@ -583,7 +583,7 @@ static void OV7740_dvp_Init(void)
     // dvp 接口初始化
     dvp_init(8);
     uint32_t rate = dvp_set_xclk_rate(25000000); // 给摄像头提供时钟
-    printf("xclk rate:%d\n", rate);
+    // printf("xclk rate:%d\n", rate);
     sysctl_set_spi0_dvp_data(1); // dvp数据口使能
 
     dvp_enable_burst(); // 突发传输模式 意义不明
@@ -655,16 +655,42 @@ int OV7740_Init(void)
     return 0;
 }
 
+#include <param.h>
+#include <data_exchange.h>
+
 volatile uint8_t g_dvp_finish_flag = 0;
 volatile uint8_t g_ram_mux = 1;
 uint32_t frame_cnt = 0;
 
+void cam_task(void)
+{
+    if(g_dvp_finish_flag == 1)
+    {
+        // static uint32_t start_time = 0;
+        // uint32_t now_time = 0;
+        // start_time = sysctl_get_time_us();
+        image_compress_crop(graph_buf0, graph_buf1, 160, 120, 2);
+        // image_compress_blackwhite(graph_buf1, graph_buf1, 80, 60, 128);
+        // image_compress_onebit(graph_buf1, graph_buf1, 80, 60, 150);
+        // vofa_sendimg(graph_buf0, 320, 240, 0);
+        // vofa_sendimg(graph_buf1, 80, 60, 1);
+        // pic_pack_send_kgs(graph_buf0, 160, 120, 0);
+        if(global_param.image_transmit_enable) {
+            pic_pack_send_kgs(graph_buf1, 80, 60, 0);
+        }
+        // now_time = sysctl_get_time_us();
+        // global_data.debug_data = (now_time-start_time)/1000.0;
+        // printf("interv_time:%.3f\n", global_data.debug_data);
+        g_dvp_finish_flag = 0;
+    }
+}
 /********************** dvp中断服务函数 ***********************/
 int on_irq_dvp(void *ctx)
 {
     if (dvp_get_interrupt(DVP_STS_FRAME_FINISH))
     { // 帧结束中断
         /* switch gram */
+        
         graph_buf_addr = g_ram_mux ? (uint32_t)(long)graph_buf0 : (uint32_t)(long)graph_buf1;
         dvp_set_ai_addr(graph_buf_addr, 0, 0);
         g_dvp_finish_flag = 1;
@@ -675,6 +701,7 @@ int on_irq_dvp(void *ctx)
         if (g_dvp_finish_flag == 0)
         {
             frame_cnt++;
+            
             dvp_start_convert();
         }
         dvp_clear_interrupt(DVP_STS_FRAME_START);

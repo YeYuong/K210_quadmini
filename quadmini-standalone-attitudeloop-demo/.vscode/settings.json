@@ -22,7 +22,9 @@
         "math.h": "c",
         "ota.h": "c",
         "stdio.h": "c",
-        "pmw3901mb.h": "c"
+        "pmw3901mb.h": "c",
+        "syscalls.h": "c",
+        "spi_sw.h": "c"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": false
 }

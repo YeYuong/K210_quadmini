@@ -19,7 +19,8 @@ typedef struct opFlow_s
 	float velLpf[2];		/*速度低通 单位cm/s*/
 	
 	uint8_t isOpFlowOk;		/*光流状态*/
-	uint8_t isDataValid;		/*数据有效*/
+	uint8_t isDataValid;	/*数据有效*/
+    uint8_t OpFlowExist;    /*光流芯片通信正常*/
 
 } opFlow_t;
 

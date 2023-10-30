@@ -6,7 +6,7 @@ C_FLAGS =  -mcmodel=medany -mabi=lp64f -march=rv64imafc -fno-common -ffunction-s
 
 C_DEFINES = -DCONFIG_LOG_COLORS -DCONFIG_LOG_ENABLE -DCONFIG_LOG_LEVEL=LOG_VERBOSE -DDEBUG=1 -DLOG_KERNEL -DLV_CONF_INCLUDE_SIMPLE -D__riscv64
 
-C_INCLUDES = -I/home/yyl/K210-project/quadmini-standalone-cam-car/lib/bsp/include -I/home/yyl/K210-project/quadmini-standalone-cam-car/lib/drivers/include -I/home/yyl/K210-project/quadmini-standalone-cam-car/lib/utils/include -I/home/yyl/K210-project/quadmini-standalone-cam-car/lib/vl53l1x/include -I/home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini 
+C_INCLUDES = -I/home/yyl/K210-project/quadmini-throughring-demo/lib/bsp/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/drivers/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/utils/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/vl53l1x/include -I/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini 
 
 # Custom flags: lib/CMakeFiles/kendryte.dir/bsp/crt.S.obj_FLAGS = -x assembler-with-cpp -D __riscv64
 

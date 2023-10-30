@@ -19,6 +19,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj"
   "CMakeFiles/quadmini.dir/src/quadmini/ring_buffer.c.obj"
   "CMakeFiles/quadmini.dir/src/quadmini/rotors.c.obj"
+  "CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj"
   "CMakeFiles/quadmini.dir/src/quadmini/task.c.obj"
   "CMakeFiles/quadmini.dir/src/quadmini/vl53l1x.c.obj"
   "quadmini"

@@ -18,6 +18,11 @@
 #define PMW_CS 24
   #define PMW_NCS_GPIOHS 1
 #define BARO_CS 25
+  #define SPI_CLK_GPIOHS 8
+  #define SPI_MOSI_GPIOHS 9
+  #define SPI_MISO_GPIOHS 10
+  #define BMI_Acc_CS_GPIOHS 11
+  #define BMI_Gyr_CS_GPIOHS 12
 
 #define WIFI_SCK 1
 #define WIFI_MISO 2

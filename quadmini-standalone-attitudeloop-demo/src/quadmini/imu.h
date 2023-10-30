@@ -87,6 +87,7 @@ extern float ob_height;           //融后高度
 extern float ob_height_speed;     //融后速度
 extern float height_acc_zero;
 extern float ob_height_acc;
+extern mag_data_t mag_data;
 
 int attitude_init(struct data_fusion_ty * data_fusion);
 void attitude_update(struct data_fusion_ty * body_data, float dt);

@@ -8,14 +8,18 @@ CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj
  ../lib/bsp/include/syscalls.h
  ../lib/drivers/include/clint.h
  ../lib/drivers/include/dmac.h
+ ../lib/drivers/include/fpioa.h
  ../lib/drivers/include/gpio_common.h
  ../lib/drivers/include/gpiohs.h
  ../lib/drivers/include/io.h
  ../lib/drivers/include/plic.h
  ../lib/drivers/include/spi.h
+ ../lib/drivers/include/sysctl.h
  ../src/quadmini/BMI088.h
  ../src/quadmini/BMI088REG.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/BMI088.c
+ ../src/quadmini/io_func.h
+ ../src/quadmini/spi_sw.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/BMI088.c
 CMakeFiles/quadmini.dir/src/quadmini/IST8310.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -30,8 +34,8 @@ CMakeFiles/quadmini.dir/src/quadmini/IST8310.c.obj
  ../lib/drivers/include/io.h
  ../lib/drivers/include/plic.h
  ../src/quadmini/IST8310.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/IST8310.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/io_func.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/IST8310.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/io_func.h
 CMakeFiles/quadmini.dir/src/quadmini/ads1015.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -51,7 +55,7 @@ CMakeFiles/quadmini.dir/src/quadmini/ads1015.c.obj
  ../src/quadmini/led.h
  ../src/quadmini/motor.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ads1015.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ads1015.c
 CMakeFiles/quadmini.dir/src/quadmini/commander.c.obj
  ../lib/bsp/include/platform.h
  ../lib/drivers/include/sysctl.h
@@ -64,7 +68,7 @@ CMakeFiles/quadmini.dir/src/quadmini/commander.c.obj
  ../src/quadmini/led.h
  ../src/quadmini/motor.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/commander.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/commander.c
 CMakeFiles/quadmini.dir/src/quadmini/control.c.obj
  ../lib/bsp/include/platform.h
  ../lib/drivers/include/fpioa.h
@@ -75,16 +79,16 @@ CMakeFiles/quadmini.dir/src/quadmini/control.c.obj
  ../src/quadmini/IST8310.h
  ../src/quadmini/led.h
  ../src/quadmini/motioncap.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/commander.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/control.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/control.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange_printf.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/imu.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/io_func.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/motor.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/pmw3901mb.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/vl53l1x.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/commander.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/control.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/control.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/imu.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/io_func.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/motor.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/pmw3901mb.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/task.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/vl53l1x.h
 CMakeFiles/quadmini.dir/src/quadmini/data_exchange.c.obj
  ../lib/bsp/include/atomic.h
  ../lib/bsp/include/platform.h
@@ -108,16 +112,16 @@ CMakeFiles/quadmini.dir/src/quadmini/data_exchange.c.obj
  ../src/quadmini/rotors.h
  ../src/quadmini/task.h
  ../src/quadmini/vl53l1x.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange_printf.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/esp8266.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ring_buffer.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/esp8266.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ring_buffer.h
 CMakeFiles/quadmini.dir/src/quadmini/data_exchange_printf.c.obj
  ../lib/bsp/include/printf.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange_printf.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange_printf.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.h
 CMakeFiles/quadmini.dir/src/quadmini/esp8266.c.obj
  ../lib/bsp/include/atomic.h
  ../lib/bsp/include/encoding.h
@@ -137,11 +141,11 @@ CMakeFiles/quadmini.dir/src/quadmini/esp8266.c.obj
  ../lib/drivers/include/utils.h
  ../src/quadmini/esp8266.h
  ../src/quadmini/io_func.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/esp8266.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ring_buffer.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/esp8266.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ring_buffer.h
 CMakeFiles/quadmini.dir/src/quadmini/filter.c.obj
  ../src/quadmini/filter.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/filter.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/filter.c
 CMakeFiles/quadmini.dir/src/quadmini/imu.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -168,7 +172,7 @@ CMakeFiles/quadmini.dir/src/quadmini/imu.c.obj
  ../src/quadmini/pmw3901mb.h
  ../src/quadmini/task.h
  ../src/quadmini/vl53l1x.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/imu.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/imu.c
 CMakeFiles/quadmini.dir/src/quadmini/led.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -189,7 +193,7 @@ CMakeFiles/quadmini.dir/src/quadmini/led.c.obj
  ../src/quadmini/led.h
  ../src/quadmini/motor.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/led.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/led.c
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/entry.h
@@ -205,6 +209,7 @@ CMakeFiles/quadmini.dir/src/quadmini/main.c.obj
  ../lib/drivers/include/gpiohs.h
  ../lib/drivers/include/io.h
  ../lib/drivers/include/plic.h
+ ../lib/drivers/include/spi.h
  ../lib/drivers/include/sysctl.h
  ../lib/drivers/include/uart.h
  ../lib/drivers/include/uarths.h
@@ -225,9 +230,10 @@ CMakeFiles/quadmini.dir/src/quadmini/main.c.obj
  ../src/quadmini/param.h
  ../src/quadmini/pmw3901mb.h
  ../src/quadmini/rotors.h
+ ../src/quadmini/spi_sw.h
  ../src/quadmini/task.h
  ../src/quadmini/vl53l1x.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/main.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/main.c
 CMakeFiles/quadmini.dir/src/quadmini/motioncap.c.obj
  ../lib/bsp/include/platform.h
  ../lib/drivers/include/sysctl.h
@@ -241,7 +247,7 @@ CMakeFiles/quadmini.dir/src/quadmini/motioncap.c.obj
  ../src/quadmini/motor.h
  ../src/quadmini/pmw3901mb.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/motioncap.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/motioncap.c
 CMakeFiles/quadmini.dir/src/quadmini/motor.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -258,7 +264,7 @@ CMakeFiles/quadmini.dir/src/quadmini/motor.c.obj
  ../src/quadmini/io_func.h
  ../src/quadmini/motor.h
  ../src/quadmini/param.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/motor.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/motor.c
 CMakeFiles/quadmini.dir/src/quadmini/ota.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -268,10 +274,10 @@ CMakeFiles/quadmini.dir/src/quadmini/ota.c.obj
  ../lib/bsp/include/w25qxx.h
  ../lib/drivers/include/clint.h
  ../lib/drivers/include/sysctl.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/data_exchange_printf.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ota.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ota.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ota.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ota.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -286,9 +292,17 @@ CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj
  ../lib/drivers/include/plic.h
  ../lib/drivers/include/sysctl.h
  ../lib/drivers/include/uart.h
+ ../src/quadmini/BMI088.h
+ ../src/quadmini/IST8310.h
+ ../src/quadmini/control.h
+ ../src/quadmini/data_exchange.h
+ ../src/quadmini/esp8266.h
+ ../src/quadmini/imu.h
+ ../src/quadmini/motor.h
  ../src/quadmini/ov7740.h
  ../src/quadmini/ov7740_regs.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ov7740.c
+ ../src/quadmini/param.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ov7740.c
 CMakeFiles/quadmini.dir/src/quadmini/param.c.obj
  ../lib/bsp/include/atomic.h
  ../lib/bsp/include/encoding.h
@@ -311,7 +325,7 @@ CMakeFiles/quadmini.dir/src/quadmini/param.c.obj
  ../src/quadmini/param.h
  ../src/quadmini/ring_buffer.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/param.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/param.c
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -325,23 +339,47 @@ CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj
  ../lib/drivers/include/io.h
  ../lib/drivers/include/plic.h
  ../lib/drivers/include/spi.h
+ ../lib/drivers/include/sysctl.h
  ../src/quadmini/BMI088.h
  ../src/quadmini/IST8310.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/imu.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/io_func.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/pmw3901mb.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/pmw3901mb.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/vl53l1x.h
+ ../src/quadmini/commander.h
+ ../src/quadmini/control.h
+ ../src/quadmini/motor.h
+ ../src/quadmini/spi_sw.h
+ ../src/quadmini/task.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/imu.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/io_func.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/pmw3901mb.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/pmw3901mb.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/vl53l1x.h
 CMakeFiles/quadmini.dir/src/quadmini/ring_buffer.c.obj
  ../lib/bsp/include/atomic.h
  ../lib/bsp/include/platform.h
  ../lib/drivers/include/sysctl.h
  ../src/quadmini/ring_buffer.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/ring_buffer.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ring_buffer.c
 CMakeFiles/quadmini.dir/src/quadmini/rotors.c.obj
  ../lib/drivers/include/pwm.h
  ../src/quadmini/rotors.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/rotors.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/rotors.c
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj
+ ../lib/bsp/include/encoding.h
+ ../lib/bsp/include/platform.h
+ ../lib/bsp/include/sleep.h
+ ../lib/bsp/include/syscalls.h
+ ../lib/drivers/include/clint.h
+ ../lib/drivers/include/dmac.h
+ ../lib/drivers/include/fpioa.h
+ ../lib/drivers/include/gpio_common.h
+ ../lib/drivers/include/gpiohs.h
+ ../lib/drivers/include/io.h
+ ../lib/drivers/include/plic.h
+ ../lib/drivers/include/spi.h
+ ../lib/drivers/include/sysctl.h
+ ../src/quadmini/BMI088.h
+ ../src/quadmini/io_func.h
+ ../src/quadmini/spi_sw.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/spi_sw.c
 CMakeFiles/quadmini.dir/src/quadmini/task.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -373,7 +411,7 @@ CMakeFiles/quadmini.dir/src/quadmini/task.c.obj
  ../src/quadmini/rotors.h
  ../src/quadmini/task.h
  ../src/quadmini/vl53l1x.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/task.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/task.c
 CMakeFiles/quadmini.dir/src/quadmini/vl53l1x.c.obj
  ../lib/bsp/include/encoding.h
  ../lib/bsp/include/platform.h
@@ -397,5 +435,5 @@ CMakeFiles/quadmini.dir/src/quadmini/vl53l1x.c.obj
  ../src/quadmini/imu.h
  ../src/quadmini/motor.h
  ../src/quadmini/task.h
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/vl53l1x.c
- /home/yyl/K210-project/quadmini-standalone-cam-car/src/quadmini/vl53l1x.h
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/vl53l1x.c
+ /home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/vl53l1x.h

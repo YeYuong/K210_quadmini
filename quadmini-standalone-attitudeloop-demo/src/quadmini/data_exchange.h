@@ -76,6 +76,12 @@ struct data_pack_ty {
     float data28;
     float data29;
     float data30;
+    float data31;
+    float data32;
+    float data33;
+    float data34;
+    float data35;
+    float data36;
     
     uint8_t tail[4];
 };

@@ -7,7 +7,10 @@
 #include <sleep.h>
 #include <gpiohs.h>
 #include <spi.h>
+#include <spi_sw.h>
+#include <sysctl.h>
 #include <math.h>
+#include <task.h>
 
 
 #define DEG2RAD		0.017453293f
@@ -24,7 +27,6 @@
 
 #define LIMIT(val, min, max) (val)<(min)?(min):(val)>(max)?(max):(val)
 
-static uint8_t isInit = 0;
 static uint8_t outlierCount = 0;			/*数据不可用计数*/
 
 opFlow_t opFlow;	/*光流*/
@@ -84,12 +86,16 @@ static void registerWrite(uint8_t reg, uint8_t value)
 	PMW_NCS_SET(0);
 	
 	usleep(50);
+#ifndef USE_SOFTWARE_SPI
 	spi_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &reg, 1, &value, 1);
+#else
+    spi_sw_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &reg, 1, &value, 1);
+#endif
 	usleep(50);
 
 	PMW_NCS_SET(1);
 	
-	//usleep(200);
+	usleep(200);
 }
 
 static uint8_t registerRead(uint8_t reg)
@@ -104,9 +110,15 @@ static uint8_t registerRead(uint8_t reg)
 	PMW_NCS_SET(0);
 	
 	usleep(50);
+#ifndef USE_SOFTWARE_SPI
 	spi_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &reg, 1, NULL, 0);
 	usleep(50);
 	spi_receive_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, NULL, 0, &data, 1);	
+#else
+	spi_sw_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &reg, 1, NULL, 0);
+	usleep(50);
+	spi_sw_receive_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, NULL, 0, &data, 1);	
+#endif
 	usleep(50);
 	
 	PMW_NCS_SET(1);
@@ -124,10 +136,16 @@ static void readMotion(motionBurst_t * motion)
 
 	PMW_NCS_SET(0);
 	
-	usleep(50);
+	usleep(50);  
+#ifndef USE_SOFTWARE_SPI
 	spi_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &address, 1, NULL, 0);
 	usleep(50);
 	spi_receive_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, NULL, 0, (uint8_t*)motion, sizeof(motionBurst_t));
+#else
+	spi_sw_send_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, &address, 1, NULL, 0);
+	usleep(50);
+	spi_sw_receive_data_standard(PMW_USE_SPI, SPI_CHIP_SELECT_2, NULL, 0, (uint8_t*)motion, sizeof(motionBurst_t));
+#endif
 	usleep(50);
 	
 	PMW_NCS_SET(1);
@@ -249,7 +267,10 @@ void OpFlowDataClear(void)
 /*光流任务函数*/
 void opticalFlowTask(float dt)
 {	
-	static uint16_t count = 0;	
+	static uint16_t count = 0;
+    if(opFlow.OpFlowExist == 0){
+        return;
+    }
 	opFlow.isOpFlowOk = 1;
 	
 	readMotion(&currentMotion);
@@ -383,30 +404,41 @@ uint8_t getOpFlowData(struct data_fusion_ty * attitude_data_p, float dt) //计�
 	
 	return opFlow.isOpFlowOk;	/*返回光流状态*/
 }
-/*初始化光流模块*/
+/*初始化光流模块
+  光流使用软件片选，必须首先初始化，否则会影响其它spi器件通信*/
 void opticalFlow_Init(void)
 {
-	if (!isInit) /*第一次初始化通用IO*/
-	{
-		gpiohs_set_drive_mode(PMW_NCS_GPIOHS, GPIO_DM_OUTPUT);
-	}
-	else 
-	{
-		resetOpFlowData();
-		opFlow.isOpFlowOk = 1;				
-	}
+    gpiohs_set_drive_mode(PMW_NCS_GPIOHS, GPIO_DM_OUTPUT);
+    resetOpFlowData();
+    opFlow.isOpFlowOk = 1;
 	
 	msleep(50);
 	
 	PMW_NCS_SET(1);
+    
+#ifndef USE_SOFTWARE_SPI
 	spi_init(PMW_USE_SPI, SPI_WORK_MODE_0, SPI_FF_STANDARD, 8, 0);  // SPI0
 	spi_set_clk_rate(PMW_USE_SPI, PMW_SPI_RATE);
+#else
+    spi_sw_init();  //software SPI
+#endif
 	msleep(40);
 
 	uint8_t chipId = registerRead(0);
 	uint8_t invChipId = registerRead(0x5f);
-	printf("Motion chip is: 0x%x\n", chipId);
-	printf("si pihc noitoM: 0x%x\n", invChipId);
+	// printf("Motion chip is: 0x%x\n", chipId);
+	// printf("si pihc noitoM: 0x%x\n", invChipId);
+    if(chipId == 0x49 && invChipId == 0xb6)
+    {
+        printf("PMW3901 init success\n");
+        opFlow.OpFlowExist = 1;
+    }
+    else
+    {
+        printf("PMW3901 not found\n");
+        opFlow.OpFlowExist = 0;
+        global_data.flags.ready_to_takeoff = global_data.flags.ready_to_takeoff>0?0:global_data.flags.ready_to_takeoff;
+    }
 
 	// 上电复位
 	registerWrite(0x3a, 0x5a);
@@ -416,8 +448,6 @@ void opticalFlow_Init(void)
 	msleep(5);
 
 	//vl53lxxInit();	/*初始化vl53lxx*/
-	
-	isInit = 1;
 }
 
 /*获取光流数据状态*/

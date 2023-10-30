@@ -7,13 +7,17 @@ CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/bsp/include/sleep.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/bsp/include/syscalls.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/clint.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/dmac.h
+CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/fpioa.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/gpio_common.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/gpiohs.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/io.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/plic.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/spi.h
+CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../lib/drivers/include/sysctl.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../src/quadmini/BMI088.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../src/quadmini/BMI088REG.h
+CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../src/quadmini/io_func.h
+CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../src/quadmini/spi_sw.h
 CMakeFiles/quadmini.dir/src/quadmini/BMI088.c.obj: ../src/quadmini/BMI088.c
 
 CMakeFiles/quadmini.dir/src/quadmini/IST8310.c.obj: ../lib/bsp/include/encoding.h
@@ -204,6 +208,7 @@ CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/gpio_com
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/gpiohs.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/io.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/plic.h
+CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/spi.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/sysctl.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/uart.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../lib/drivers/include/uarths.h
@@ -224,6 +229,7 @@ CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/ov7740_regs.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/param.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/pmw3901mb.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/rotors.h
+CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/spi_sw.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/task.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/vl53l1x.h
 CMakeFiles/quadmini.dir/src/quadmini/main.c.obj: ../src/quadmini/main.c
@@ -285,8 +291,16 @@ CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../lib/drivers/include/io.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../lib/drivers/include/plic.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../lib/drivers/include/sysctl.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../lib/drivers/include/uart.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/BMI088.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/IST8310.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/control.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/data_exchange.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/esp8266.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/imu.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/motor.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/ov7740.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/ov7740_regs.h
+CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/param.h
 CMakeFiles/quadmini.dir/src/quadmini/ov7740.c.obj: ../src/quadmini/ov7740.c
 
 CMakeFiles/quadmini.dir/src/quadmini/param.c.obj: ../lib/bsp/include/atomic.h
@@ -324,8 +338,14 @@ CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../lib/drivers/include/gpi
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../lib/drivers/include/io.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../lib/drivers/include/plic.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../lib/drivers/include/spi.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../lib/drivers/include/sysctl.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/BMI088.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/IST8310.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/commander.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/control.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/motor.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/spi_sw.h
+CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/task.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/imu.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/io_func.h
 CMakeFiles/quadmini.dir/src/quadmini/pmw3901mb.c.obj: ../src/quadmini/pmw3901mb.c
@@ -341,6 +361,24 @@ CMakeFiles/quadmini.dir/src/quadmini/ring_buffer.c.obj: ../src/quadmini/ring_buf
 CMakeFiles/quadmini.dir/src/quadmini/rotors.c.obj: ../lib/drivers/include/pwm.h
 CMakeFiles/quadmini.dir/src/quadmini/rotors.c.obj: ../src/quadmini/rotors.h
 CMakeFiles/quadmini.dir/src/quadmini/rotors.c.obj: ../src/quadmini/rotors.c
+
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/bsp/include/encoding.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/bsp/include/platform.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/bsp/include/sleep.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/bsp/include/syscalls.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/clint.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/dmac.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/fpioa.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/gpio_common.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/gpiohs.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/io.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/plic.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/spi.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../lib/drivers/include/sysctl.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../src/quadmini/BMI088.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../src/quadmini/io_func.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../src/quadmini/spi_sw.h
+CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj: ../src/quadmini/spi_sw.c
 
 CMakeFiles/quadmini.dir/src/quadmini/task.c.obj: ../lib/bsp/include/encoding.h
 CMakeFiles/quadmini.dir/src/quadmini/task.c.obj: ../lib/bsp/include/platform.h

@@ -16,6 +16,7 @@ param_save_t global_param = {
     .header = PARAM_HEADER,
     .Kuadmini_ID = 0,
     .send_enable = 1,
+    .image_transmit_enable = 0,
     .gyro_zero = {0.0, 0.0, 0.0},
     .wifi_saved_data = {
         .wifi_name = "ETLAB410-2",
@@ -70,12 +71,12 @@ void param_init(void)
     if(param_buffer.header == PARAM_HEADER && param_buffer.tail == PARAM_TAIL)
     { // 存在存储的参数
         global_param = param_buffer;
-        printf("read param from flash!\n");
+        printf("read param from flash\n");
     }
     else
     { // 不存在参数存储
         w25qxx_write_data(PARAM_FLASH_ADDR, (uint8_t *)&global_param, sizeof(param_save_t));
-        printf("write param to flash!\n");
+        printf("write param to flash\n");
     }
 	param_refresh();
 }

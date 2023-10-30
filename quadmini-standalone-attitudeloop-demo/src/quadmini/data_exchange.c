@@ -71,8 +71,10 @@ void generate_data_pack(struct data_pack_ty *data_pack) {
 	//构造数传数据包
 	memset(data_pack, 0, sizeof(struct data_pack_ty));
 	//data_pack->time = sysctl_get_time_us();
+/*基础飞行数据*/
 
-	// 欧拉角
+/*传感器测试数据*/
+    // 欧拉角
 	data_pack->data0 = attitude_data.heading_angle.roll;
 	data_pack->data1 = attitude_data.heading_angle.pitch;
 	data_pack->data2 = attitude_data.heading_angle.yaw;
@@ -80,44 +82,82 @@ void generate_data_pack(struct data_pack_ty *data_pack) {
 	data_pack->data3 = getBodyPosition(MC_X);
 	data_pack->data4 = getBodyPosition(MC_Y);
 	data_pack->data5 = getBodyPosition(MC_Z);
-	// 位置速度
-	// data_pack->data6 = getBodySpeed(MC_X);
-	// data_pack->data7 = getBodySpeed(MC_Y);
-	// data_pack->data8 = getBodySpeed(MC_Z);
-	// 角速度环--roll
-	data_pack->data6 = global_data.body_ctrl.angle_speed_ctrl.expect_angle_speed.x;
-	data_pack->data7 = attitude_data.imu.gyro.x * RAD_TO_ANG;
-	data_pack->data8 = global_data.body_ctrl.angle_speed_ctrl.out_motor_speed.x;
-	// 角度环--roll
-	data_pack->data9 = global_data.body_ctrl.angle_ctrl.expect_angle.x;
-	data_pack->data10= attitude_data.heading_angle.roll;
-	data_pack->data11= global_data.body_ctrl.angle_ctrl.out_angle_speed.x;
-	// 高度速度环
-	data_pack->data12= global_data.body_ctrl.height_speed_ctrl.expect_height_speed;
-    data_pack->data13= getBodySpeed(MC_Z);
-    data_pack->data14= (global_data.body_ctrl.height_speed_ctrl.out_throttle-global_data.body_ctrl.thr_hover)/100.0;
-	// 高度环
-    data_pack->data15= global_data.body_ctrl.height_ctrl.expect_height;
-    data_pack->data16= getBodyPosition(MC_Z);
-    data_pack->data17= global_data.body_ctrl.height_ctrl.out_height_speed;
-	// 位置速度环--y
-    data_pack->data18= global_data.body_ctrl.y_speed_ctrl.expect_y_speed;
-    data_pack->data19= getBodySpeed(MC_Y);
-	data_pack->data20= global_data.body_ctrl.y_speed_ctrl.out_roll;
-	// 位置环--y
-	data_pack->data21= global_data.body_ctrl.y_posi_ctrl.expect_y_posi;
-	data_pack->data22= getBodyPosition(MC_Y);
-	data_pack->data23= global_data.body_ctrl.y_posi_ctrl.out_y_sp;
-	// 光流数据
-	data_pack->data24= getOpFlowPosition(OP_X); 
-	data_pack->data25= getOpFlowPosition(OP_Y);
-	data_pack->data26= getOpFlowSpeed(OP_X); 
-	data_pack->data27= getOpFlowSpeed(OP_Y);
+    // IMU原始数据
+    data_pack->data6 = attitude_data.imu.gyro.x * RAD_TO_ANG;
+	data_pack->data7 = attitude_data.imu.gyro.y * RAD_TO_ANG;
+	data_pack->data8 = attitude_data.imu.gyro.z * RAD_TO_ANG;
+    data_pack->data9 = attitude_data.imu.acc.x;
+	data_pack->data10= attitude_data.imu.acc.y;
+	data_pack->data11= attitude_data.imu.acc.z;
+    // 光流原始数据
+    data_pack->data12= opFlow.pixSum[OP_X];
+	data_pack->data13= opFlow.pixSum[OP_Y];
+	data_pack->data14= getMotioncapSpeed(OP_X);
+    data_pack->data15= getMotioncapSpeed(OP_Y);
+	data_pack->data16= getOpFlowSpeed(OP_X); 
+	data_pack->data17= getOpFlowSpeed(OP_Y);
+    // TOF原始数据
+	data_pack->data18= getTOFHeight();
+	data_pack->data19= getObHeight();
+	data_pack->data20= getObHeightSpeed();
+    // 磁力计数据
+	data_pack->data21= mag_data.mag_X;
+	data_pack->data22= mag_data.mag_Y;
+	data_pack->data23= mag_data.mag_Z;
+
 	// 其他数据
 	data_pack->data28= global_data.motor_current;
 	data_pack->data29= global_data.batt_voltage;
 	data_pack->data30= global_data.debug_data;
+
+/*PID调试数据*/
+	// 欧拉角
+	// data_pack->data0 = attitude_data.heading_angle.roll;
+	// data_pack->data1 = attitude_data.heading_angle.pitch;
+	// data_pack->data2 = attitude_data.heading_angle.yaw;
+	// // 位置
+	// data_pack->data3 = getBodyPosition(MC_X);
+	// data_pack->data4 = getBodyPosition(MC_Y);
+	// data_pack->data5 = getBodyPosition(MC_Z);
+	// // 位置速度
+	// // data_pack->data6 = getBodySpeed(MC_X);
+	// // data_pack->data7 = getBodySpeed(MC_Y);
+	// // data_pack->data8 = getBodySpeed(MC_Z);
+	// // 角速度环--roll
+	// data_pack->data6 = global_data.body_ctrl.angle_speed_ctrl.expect_angle_speed.x;
+	// data_pack->data7 = attitude_data.imu.gyro.x * RAD_TO_ANG;
+	// data_pack->data8 = global_data.body_ctrl.angle_speed_ctrl.out_motor_speed.x;
+	// // 角度环--roll
+	// data_pack->data9 = global_data.body_ctrl.angle_ctrl.expect_angle.x;
+	// data_pack->data10= attitude_data.heading_angle.roll;
+	// data_pack->data11= global_data.body_ctrl.angle_ctrl.out_angle_speed.x;
+	// // 高度速度环
+	// data_pack->data31= global_data.body_ctrl.height_speed_ctrl.expect_height_speed;
+    // data_pack->data32= getBodySpeed(MC_Z);
+    // data_pack->data33= (global_data.body_ctrl.height_speed_ctrl.out_throttle-global_data.body_ctrl.thr_hover)/100.0;
+	// // 高度环
+    // data_pack->data34= global_data.body_ctrl.height_ctrl.expect_height;
+    // data_pack->data35= getBodyPosition(MC_Z);
+    // data_pack->data36= global_data.body_ctrl.height_ctrl.out_height_speed;
+	// // 位置速度环--y
+    data_pack->data31= global_data.body_ctrl.y_speed_ctrl.expect_y_speed;
+    data_pack->data32= getBodySpeed(MC_Y);
+	data_pack->data33= global_data.body_ctrl.y_speed_ctrl.out_roll;
+	// // 位置环--y
+	data_pack->data34= global_data.body_ctrl.y_posi_ctrl.expect_y_posi;
+	data_pack->data35= getBodyPosition(MC_Y);
+	data_pack->data36= global_data.body_ctrl.y_posi_ctrl.out_y_sp;
+	// // 光流数据
+	// data_pack->data24= getOpFlowPosition(OP_X); 
+	// data_pack->data25= getOpFlowPosition(OP_Y);
+	// data_pack->data26= getOpFlowSpeed(OP_X); 
+	// data_pack->data27= getOpFlowSpeed(OP_Y);
+	// // 其他数据
+	// data_pack->data28= global_data.motor_current;
+	// data_pack->data29= global_data.batt_voltage;
+	// data_pack->data30= global_data.debug_data;
  
+/*帧尾*/
 	data_pack->tail[0] = 0x00;data_pack->tail[1] = 0x00;data_pack->tail[2] = 0x80;data_pack->tail[3] = 0x7f;
 }
 

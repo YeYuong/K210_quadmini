@@ -86,7 +86,7 @@ void ADS1015_Init()
 		ads_exist = 1;
 	else
 		ads_exist = 0;
-	printf("ads id:%x\n",id);
+	printf("ADS1015 init success\n");
 }
 
 //ADS1015读数据

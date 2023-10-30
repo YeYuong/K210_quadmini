@@ -402,15 +402,16 @@ int imu_init(void) {
 	uint8_t err;
 	err = ist8310_init();
 	if (err == IST8310_NO_ERROR)
-		printk("ist8310 init success\n");
+		printk("IST8310 init success\n");
 	else
-		printk("ist8310 not found\n");
+		printk("IST8310 not found\n");
 
 	err = BMI088_init();
 	if (err == BMI088_NO_ERROR)
-		printk("BMI8310 init success\n");
+		printk("BMI088 init success\n");
 	else {
-		printk("err:%02X\n", err);
+		printk("BMI088 init err:%02X\n", err);
+        global_data.flags.ready_to_takeoff = -1;
 		if (err & BMI088_SELF_TEST_ACCEL_ERROR) printf("BMI Accel Error\n");
 		if (err & BMI088_SELF_TEST_GYRO_ERROR) printf("BMI Gyro Error\n");
 	}

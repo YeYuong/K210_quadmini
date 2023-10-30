@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define BMI088_USE_SPI SPI_DEVICE_0
-#define BMI_SPI_RATE 10000000	//max 10MHz
+#define BMI_SPI_RATE 2000000	//max 10MHz
 
 //Pin Definition
 #define CS_ACCEL SPI_CHIP_SELECT_0

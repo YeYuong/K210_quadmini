@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: latin-1 -*-
 import rospy
-import threading
+# import threading
 from geometry_msgs.msg import PoseStamped, TwistStamped
 from socket import *
 import time
@@ -31,6 +31,8 @@ LAND=4
 RESET=5
 CALIBRATE=6
 
+last_send_time = send_time = 0
+
 class Kuadmini:
 
     def __init__(self, connect_addr = ('192.168.0.160',1000), number = 0, use_tcp = 1):
@@ -41,6 +43,7 @@ class Kuadmini:
         self.last_mc_x, self.last_mc_y, self.last_mc_z, self.mc_x_lpf, self.mc_y_lpf, self.mc_z_lpf, self.dt = 0,0,0,0,0,0,0
         self.use_tcp = use_tcp
         self.addr = connect_addr
+        self.mc_send_cnt = 0
         connected = 0
         if(self.use_tcp == 1):
             self.socket = socket(AF_INET, SOCK_STREAM)
@@ -137,8 +140,8 @@ class Kuadmini:
     def quadrotor_posi_cb(self, msg):
         # 解析动捕数据
         ouler = tfs.euler.quat2euler([msg.pose.orientation.x,msg.pose.orientation.y,msg.pose.orientation.z,msg.pose.orientation.w])
-        self.mc_roll = 57.295779579 * ouler[2]  # 当前yaw角度
-        self.mc_pitch = 57.295779579 * ouler[1]  # 当前yaw角度
+        self.mc_roll = 57.295779579 * ouler[2]  # 当前roll角度
+        self.mc_pitch = 57.295779579 * ouler[1]  # 当前pitch角度
         self.mc_yaw = 57.295779579 * ouler[0]  # 当前yaw角度
         self.mc_x = (msg.pose.position.x/1000)  # 当前x位置
         self.mc_y = (msg.pose.position.y/1000)  # 当前y位置
@@ -146,7 +149,14 @@ class Kuadmini:
         self.mc_x_lpf +=  0.8 * (self.mc_x - self.mc_x_lpf) # 位置低通滤波
         self.mc_y_lpf +=  0.8 * (self.mc_y - self.mc_y_lpf) # 位置低通滤波
         self.mc_z_lpf +=  0.8 * (self.mc_z - self.mc_z_lpf) # 位置低通滤波
-        self.send_motioncap_pack(self.mc_x, self.mc_y, self.mc_z, self.mc_vel_x, self.mc_vel_y, self.mc_vel_z, self.mc_roll, self.mc_pitch, self.mc_yaw)
+        self.mc_send_cnt += 1
+        # global last_send_time, send_time
+        # send_time = time.time()
+        # print(send_time-last_send_time)
+        # last_send_time = send_time
+        if(self.mc_send_cnt % 2 == 0):  # 降低发送频率
+            self.send_motioncap_pack(self.mc_x, self.mc_y, self.mc_z, self.mc_vel_x, self.mc_vel_y, self.mc_vel_z, self.mc_roll, self.mc_pitch, self.mc_yaw)
+            
 
         # pk = "mc:{0},{1},{2},{3}\n".format(self.mc_y, self.mc_y_lpf, self.mc_vel_y, self.dt).encode("utf-8")
         # socket.sendto(self.vofa_sock, pk, ("127.0.0.1",1347))

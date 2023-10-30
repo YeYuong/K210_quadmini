@@ -40,12 +40,13 @@ void VL53L1X_Init(void)
     
     if(VL53L1X_GetSensorId(tof_dev, &id) || id != VL53L1X_ID)
 	{
-		printf("VL53L1X failed!\n");
+        global_data.flags.ready_to_takeoff = global_data.flags.ready_to_takeoff>0?0:global_data.flags.ready_to_takeoff;
+		printf("VL53L1X not found\n");
 		return;
 	}
     else
     {
-        printf("VL53L1X ID: 0x%04X!\n", id);
+        printf("VL53L1X init success\n");
     }
     
 	isInitvl53l1x = 1;
@@ -59,6 +60,12 @@ void VL53L1X_Init(void)
 void VL53L1X_Read(void)
 {
     int ret = VL53L1X_GetDistance(tof_dev, &tof_distance);
+    if(ret < 0)
+    {
+        global_data.flags.ready_to_takeoff = 0;
+    }else{
+        global_data.flags.ready_to_takeoff &= 1;
+    }
 	tof_height = tof_distance * 0.001f;
 	// printf("ret%d tof:%f\n", ret, tof_height);
 }

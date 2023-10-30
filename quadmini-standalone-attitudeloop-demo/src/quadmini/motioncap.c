@@ -60,7 +60,8 @@ void height_fusion_20_mc(float dt)
 	float new_height_MC, err1, err2;
 	static float old_height_MC=0;
 	new_height_MC = motioncap_data.mc_pos[MC_Z];
-	mc_height_speed = (new_height_MC-old_height_MC)/dt;
+	// mc_height_speed = (new_height_MC-old_height_MC)/dt;
+    mc_height_speed = motioncap_data.mc_vel[MC_Z];//
 
 	err1 = (new_height_MC-ob_height);
 	err2 = (mc_height_speed - ob_height_speed);
@@ -70,7 +71,7 @@ void height_fusion_20_mc(float dt)
 	height_acc_zero = -LIMIT_R(global_data.body_ctrl.thr - 45, 0, 20)*0.13/20.0 + ob_3 * (err1 + err2);
 	old_height_MC = new_height_MC;
 
-	motioncap_cradle(dt);
+	// motioncap_cradle(dt);
 }
 
 void motioncap_on_pack_received(void *data)
@@ -88,12 +89,13 @@ void motioncap_cradle(float dt)
     if(global_data.flags.use_motioncap_data)
     {
         interv_time += dt;
+        global_data.debug_data = interv_time;
         if(motioncap_update)
         {
             interv_time = 0.0;
             motioncap_update = 0;
         }
-        if(interv_time >= 0.2)
+        if(interv_time >= 0.3)
         {
             global_data.flags.use_motioncap_data = 0;
             opFlow.posSum[OP_X] = 100.0 * motioncap_data.mc_pos[MC_X];

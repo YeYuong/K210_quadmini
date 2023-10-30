@@ -27,10 +27,19 @@ int core1_function(void *ctx)
 int main(void)
 {
     sysctl_pll_set_freq(SYSCTL_PLL0, 800000000);
+    sysctl_pll_set_freq(SYSCTL_PLL2, 45158400UL);
     uint64_t core = current_coreid();
     int data;
     printf("Core %ld Hello world\n", core);
-    register_core1(core1_function, NULL);
+    // register_core1(core1_function, NULL);
+    plic_init();
+
+    fpioa_set_function(29, FUNC_GPIOHS0 + 0);
+    fpioa_set_function(24, FUNC_GPIOHS0 + 1);
+    gpiohs_set_drive_mode(1, GPIO_DM_OUTPUT);
+    gpiohs_set_drive_mode(0, GPIO_DM_OUTPUT);
+    gpiohs_set_pin(0, GPIO_PV_HIGH);
+    gpiohs_set_pin(1, GPIO_PV_HIGH);
 
     // // 将串口设置为GPIO转发
     // fpioa_set_function(4, FUNC_GPIOHS0 + 0); // K210 RX
@@ -56,6 +65,10 @@ int main(void)
     // scanf("%d", &data);
     // printf("\nData is %d\n", data);
     while(1)
+    {
+        gpiohs_set_pin(0, GPIO_PV_HIGH);
+        gpiohs_set_pin(1, GPIO_PV_HIGH);
         continue;
+    }
     return 0;
 }

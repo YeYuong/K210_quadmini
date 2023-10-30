@@ -29,10 +29,8 @@ void task_400hz(struct global_data_ty * p_global_data) {
     static uint64_t start_time;
     float dt = start_time == 0 ? 0.0025 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
-
     imu_read(dt);
     data_exchange_task();
-	commander_cradle(dt);
     flight_status_control(&(p_global_data->body_ctrl), &(p_global_data->remote_ctrl), dt);
 
     angle_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, dt);
@@ -60,8 +58,12 @@ void task_100hz(struct global_data_ty * p_global_data) {
 
     opticalFlowTask(dt);    /*光流任务*/
     if(global_data.flags.use_motioncap_data)
+    {
         speed_fusion_mc(dt);
+    }
     
+	motioncap_cradle(dt);
+	commander_cradle(dt);
 }
 
 void task_50hz(struct global_data_ty * p_global_data) {
@@ -69,8 +71,8 @@ void task_50hz(struct global_data_ty * p_global_data) {
     float dt = start_time == 0 ? 0.02 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
 
-    xy_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
     height_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    xy_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
    
 }
 
@@ -94,27 +96,11 @@ void task_10hz(struct global_data_ty * p_global_data) {
     static uint64_t start_time;
     float dt = start_time == 0 ? 0.1 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
-    xy_position_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    // xy_position_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
     key_reboot();
     adc_task();
+    // cam_task();
 
-    // if(g_dvp_finish_flag == 1)
-    // {
-    //     static uint32_t start_time = 0;
-    //     uint32_t now_time = 0;
-    //     image_compress_crop(graph_buf0, graph_buf1, 160, 120, 2);
-    //     // image_compress_blackwhite(graph_buf1, graph_buf1, 80, 60, 128);
-    //     // image_compress_onebit(graph_buf1, graph_buf1, 80, 60, 150);
-    //     // vofa_sendimg(graph_buf0, 320, 240, 0);
-    //     // vofa_sendimg(graph_buf1, 80, 60, 1);
-    //     // pic_pack_send_kgs(graph_buf0, 160, 120, 0);
-    //     pic_pack_send_kgs(graph_buf1, 80, 60, 0);
-    //     now_time = sysctl_get_time_us();
-    //     global_data.debug_data = (now_time-start_time)/1000.0;
-    //     // printf("interv_time:%.2f\n", global_data.debug_data);
-    //     start_time = now_time;
-    //     g_dvp_finish_flag = 0;
-    // }
 }
 
 int task_loop(struct global_data_ty * global_data) {

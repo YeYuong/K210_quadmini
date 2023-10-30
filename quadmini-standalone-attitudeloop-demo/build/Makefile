@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yyl/K210-project/quadmini-standalone-cam-car
+CMAKE_SOURCE_DIR = /home/yyl/K210-project/quadmini-throughring-demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yyl/K210-project/quadmini-standalone-cam-car/build
+CMAKE_BINARY_DIR = /home/yyl/K210-project/quadmini-throughring-demo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles /home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles /home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyl/K210-project/quadmini-standalone-cam-car/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -676,6 +676,33 @@ src/quadmini/rotors.c.s:
 	$(MAKE) -f CMakeFiles/quadmini.dir/build.make CMakeFiles/quadmini.dir/src/quadmini/rotors.c.s
 .PHONY : src/quadmini/rotors.c.s
 
+src/quadmini/spi_sw.obj: src/quadmini/spi_sw.c.obj
+
+.PHONY : src/quadmini/spi_sw.obj
+
+# target to build an object file
+src/quadmini/spi_sw.c.obj:
+	$(MAKE) -f CMakeFiles/quadmini.dir/build.make CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.obj
+.PHONY : src/quadmini/spi_sw.c.obj
+
+src/quadmini/spi_sw.i: src/quadmini/spi_sw.c.i
+
+.PHONY : src/quadmini/spi_sw.i
+
+# target to preprocess a source file
+src/quadmini/spi_sw.c.i:
+	$(MAKE) -f CMakeFiles/quadmini.dir/build.make CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.i
+.PHONY : src/quadmini/spi_sw.c.i
+
+src/quadmini/spi_sw.s: src/quadmini/spi_sw.c.s
+
+.PHONY : src/quadmini/spi_sw.s
+
+# target to generate assembly for a file
+src/quadmini/spi_sw.c.s:
+	$(MAKE) -f CMakeFiles/quadmini.dir/build.make CMakeFiles/quadmini.dir/src/quadmini/spi_sw.c.s
+.PHONY : src/quadmini/spi_sw.c.s
+
 src/quadmini/task.obj: src/quadmini/task.c.obj
 
 .PHONY : src/quadmini/task.obj
@@ -800,6 +827,9 @@ help:
 	@echo "... src/quadmini/rotors.obj"
 	@echo "... src/quadmini/rotors.i"
 	@echo "... src/quadmini/rotors.s"
+	@echo "... src/quadmini/spi_sw.obj"
+	@echo "... src/quadmini/spi_sw.i"
+	@echo "... src/quadmini/spi_sw.s"
 	@echo "... src/quadmini/task.obj"
 	@echo "... src/quadmini/task.i"
 	@echo "... src/quadmini/task.s"

@@ -15,6 +15,7 @@ typedef struct
     uint32_t header; // 头部校验
     uint16_t Kuadmini_ID;
     uint8_t send_enable;
+    uint8_t image_transmit_enable;
     struct vector_f_3 gyro_zero;
     wifi_connect_t wifi_saved_data;
     struct pid_data_ty pid_saved_data;

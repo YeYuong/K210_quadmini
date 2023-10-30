@@ -23,6 +23,7 @@
 #include <led.h>
 #include <param.h>
 #include <ov7740.h>
+#include <spi_sw.h>
 
 struct global_data_ty global_data;
 
@@ -31,15 +32,17 @@ int main() {
     sysctl_pll_set_freq(SYSCTL_PLL2, 45158400UL);
     plic_init();
 
-    printf("Quadmini Startup\n\n");
+    printf("\n>>>> Quadmini <<<<\n");
 
+    gpio_init();
     fpgio_init();
     param_init();
-    gpio_init();
     LED_Init();
 	rgb_set(5,10,5);
     motor_init(&(global_data.motor));
     ctrl_init(&global_data.body_ctrl);
+    global_data.flags.ready_to_takeoff = 1;
+    // OV7740_Init();
     opticalFlow_Init();
     imu_init();
     VL53L1X_Init();

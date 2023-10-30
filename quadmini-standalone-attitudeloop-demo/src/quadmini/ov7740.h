@@ -123,6 +123,7 @@ void vofa_sendimg(uint8_t *image, uint16_t width, uint16_t height, uint8_t RGB1_
 
 void OV7740_Start(void);
 void OV7740_Stop(void);
+void cam_task(void);
 
 int on_irq_dvp(void *ctx);
 

@@ -11,6 +11,7 @@ struct global_flags_ty
 	uint8_t use_motioncap_data;
 	uint8_t use_commander;
 	uint8_t serial_connected;
+    int8_t ready_to_takeoff;
 };
 
 struct global_data_ty

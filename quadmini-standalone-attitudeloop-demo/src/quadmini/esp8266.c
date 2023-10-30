@@ -150,7 +150,7 @@ void tx_handle(void)
 			break;
 		case PACKINFO_CMD:
 			tx_pack[0].pack_info = (uint8_t)pop(&tx_cmd_buf, (uint8_t *)(tx_pack[0].pack_data), 63) | 0x40;
-			printf("cmddata:%s", tx_pack[0].pack_data);
+			// printf("cmddata:%s|||\n", tx_pack[0].pack_data);
 			if(is_empty(&tx_cmd_buf))
 				packinfo_type = PACKINFO_NORM;
 			break;
@@ -318,7 +318,7 @@ void esp_send_command(const char *cmd)	//发送控制信息
 	sysctl_disable_irq();
 	corelock_lock(&esp_core_lock);
 	push(&tx_cmd_buf, cmd, strlen(cmd));
-	push(&tx_cmd_buf, "\n", 1);
+	// push(&tx_cmd_buf, "\n", 1);
 	corelock_unlock(&esp_core_lock);
 	sysctl_enable_irq();
 }
@@ -344,7 +344,7 @@ void esp8266_spi_uart_init(void) {
 	spi_init(ESP8266_USE_SPI, SPI_WORK_MODE_0, SPI_FF_STANDARD, 32, 1);  // SPI1
 	spi_set_clk_rate(ESP8266_USE_SPI, EPS_SPI_CLK_RATE);  // 1MHz/10MHz/16MHz
 
-	printf("esp init ok\n\r");
+	// printf("esp init ok\n\r");
 }
 
 void esp8266_init(const char *wifi_name, const char *password, const char *ip_address, const char *gateway, uint8_t use_tcp)
@@ -354,6 +354,7 @@ void esp8266_init(const char *wifi_name, const char *password, const char *ip_ad
 	ring_buffer_init(&rx_buf, 4096 * 100);
 	esp8266_spi_uart_init();
 	char cmd[252];
-	sprintf(cmd, "wifi_connect$%s$%s$%s$%s$%s$", wifi_name, password, ip_address, gateway, use_tcp?"tcp":"udp");
+	sprintf(cmd, "wifi_connect$%s$%s$%s$%s$%s$\n", wifi_name, password, ip_address, gateway, use_tcp?"tcp":"udp");
+    printf("WIFI: | %s | %s | %s |\n", wifi_name, ip_address, use_tcp?"tcp":"udp");
 	esp_send_command(cmd);
 }

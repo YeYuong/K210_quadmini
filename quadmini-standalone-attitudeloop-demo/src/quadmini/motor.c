@@ -202,7 +202,7 @@ uint32_t Scales(int note)
     {
         idx = 3 + (note/7)*12;
         note %= 7;
-        printf("|%d|", note);
+        // printf("|%d|", note);
         idx += note>=3 ? 5:0;
         note = note>=3 ? note-3:note;
         idx += note*2;
