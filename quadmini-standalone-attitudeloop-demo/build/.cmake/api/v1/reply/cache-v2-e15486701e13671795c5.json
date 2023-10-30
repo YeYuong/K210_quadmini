@@ -207,7 +207,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo/build"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -619,7 +619,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210-project/quadmini-throughring-demo/lds/kendryte.ld"
+			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lds/kendryte.ld"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_DEBUG",
@@ -771,7 +771,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -831,7 +831,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210-project/quadmini-throughring-demo/lds/kendryte.ld"
+			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lds/kendryte.ld"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_DEBUG",
@@ -1063,7 +1063,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210-project/quadmini-throughring-demo/lds/kendryte.ld"
+			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lds/kendryte.ld"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_DEBUG",
@@ -1319,7 +1319,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210-project/quadmini-throughring-demo/lds/kendryte.ld"
+			"value" : " -nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lds/kendryte.ld"
 		},
 		{
 			"name" : "PROJ",
@@ -1343,7 +1343,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo"
 		},
 		{
 			"name" : "SOURCE_FILES",
@@ -1355,7 +1355,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/BMI088.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/IST8310.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ads1015.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/commander.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/control.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/data_exchange_printf.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/esp8266.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/filter.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/imu.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/led.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/main.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/motioncap.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/motor.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ota.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ov7740.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/param.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/pmw3901mb.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/ring_buffer.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/rotors.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/spi_sw.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/task.c;/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini/vl53l1x.c"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/BMI088.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/IST8310.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/ads1015.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/commander.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/control.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/data_exchange.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/data_exchange_printf.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/esp8266.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/filter.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/imu.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/led.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/main.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/motioncap.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/motor.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/ota.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/ov7740.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/param.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/pmw3901mb.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/ring_buffer.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/rotors.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/spi_sw.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/task.c;/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini/vl53l1x.c"
 		},
 		{
 			"name" : "TOOLCHAIN",
@@ -1379,7 +1379,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo/build"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build"
 		},
 		{
 			"name" : "quadmini_SOURCE_DIR",
@@ -1391,7 +1391,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/yyl/K210-project/quadmini-throughring-demo"
+			"value" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo"
 		}
 	],
 	"kind" : "cache",

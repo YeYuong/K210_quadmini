@@ -1,4 +1,4 @@
-# Install script for directory: /home/yyl/K210-project/quadmini-throughring-demo
+# Install script for directory: /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/yyl/K210-project/quadmini-throughring-demo/build/lib/cmake_install.cmake")
+  include("/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/lib/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yyl/K210-project/quadmini-throughring-demo/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -133,23 +133,23 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/bsp/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/bsp/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/drivers/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/drivers/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/utils/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/utils/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/vl53l1x/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/vl53l1x/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini"
 				}
 			],
 			"language" : "C",
@@ -200,23 +200,23 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/bsp/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/bsp/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/drivers/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/drivers/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/utils/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/utils/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/vl53l1x/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/vl53l1x/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini"
 				}
 			],
 			"language" : "C",

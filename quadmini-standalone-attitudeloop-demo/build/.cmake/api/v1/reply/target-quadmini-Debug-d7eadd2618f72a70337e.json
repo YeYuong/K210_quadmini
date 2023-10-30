@@ -143,23 +143,23 @@
 			[
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/bsp/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/bsp/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/drivers/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/drivers/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/utils/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/utils/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/lib/vl53l1x/include"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/vl53l1x/include"
 				},
 				{
 					"backtrace" : 12,
-					"path" : "/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini"
+					"path" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini"
 				}
 			],
 			"language" : "C",
@@ -208,7 +208,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210-project/quadmini-throughring-demo/lds/kendryte.ld",
+				"fragment" : "-nostartfiles -static -Wl,--gc-sections -Wl,-static -Wl,--start-group -Wl,--whole-archive -Wl,--no-whole-archive -Wl,--end-group -Wl,-EL -Wl,--no-relax -T /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lds/kendryte.ld",
 				"role" : "flags"
 			},
 			{

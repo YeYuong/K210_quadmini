@@ -6,5 +6,5 @@ C_FLAGS =  -mcmodel=medany -mabi=lp64f -march=rv64imafc -fno-common -ffunction-s
 
 C_DEFINES = -DCONFIG_LOG_COLORS -DCONFIG_LOG_ENABLE -DCONFIG_LOG_LEVEL=LOG_VERBOSE -DDEBUG=1 -DLOG_KERNEL -DLV_CONF_INCLUDE_SIMPLE -D__riscv64
 
-C_INCLUDES = -I/home/yyl/K210-project/quadmini-throughring-demo/lib/bsp/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/drivers/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/utils/include -I/home/yyl/K210-project/quadmini-throughring-demo/lib/vl53l1x/include -I/home/yyl/K210-project/quadmini-throughring-demo/src/quadmini 
+C_INCLUDES = -I/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/bsp/include -I/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/drivers/include -I/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/utils/include -I/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib/vl53l1x/include -I/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/src/quadmini 
 

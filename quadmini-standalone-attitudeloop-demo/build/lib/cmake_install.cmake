@@ -1,4 +1,4 @@
-# Install script for directory: /home/yyl/K210-project/quadmini-throughring-demo/lib
+# Install script for directory: /home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -58,14 +58,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "kendryte::@306ed2d68c6501e8728f",
-					"jsonFile" : "target-kendryte-Debug-ce7a9dd8bbb5c0eb2ad4.json",
+					"jsonFile" : "target-kendryte-Debug-d614c8555f5a667f7c66.json",
 					"name" : "kendryte",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "quadmini::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-quadmini-Debug-d9a8648551d57de62e94.json",
+					"jsonFile" : "target-quadmini-Debug-d7eadd2618f72a70337e.json",
 					"name" : "quadmini",
 					"projectIndex" : 0
 				}
@@ -75,8 +75,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/yyl/K210-project/quadmini-throughring-demo/build",
-		"source" : "/home/yyl/K210-project/quadmini-throughring-demo"
+		"build" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build",
+		"source" : "/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo"
 	},
 	"version" : 
 	{

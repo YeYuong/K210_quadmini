@@ -54,16 +54,16 @@ void task_100hz(struct global_data_ty * p_global_data) {
     float dt = start_time == 0 ? 0.01 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
 
-    height_fusion_100(dt);
+    // height_fusion_100(dt);
 
-    opticalFlowTask(dt);    /*光流任务*/
-    if(global_data.flags.use_motioncap_data)
-    {
-        speed_fusion_mc(dt);
-    }
+    // opticalFlowTask(dt);    /*光流任务*/
+    // if(global_data.flags.use_motioncap_data)
+    // {
+    //     speed_fusion_mc(dt);
+    // }
     
-	motioncap_cradle(dt);
-	commander_cradle(dt);
+	// motioncap_cradle(dt);
+	// commander_cradle(dt);
 }
 
 void task_50hz(struct global_data_ty * p_global_data) {
@@ -71,8 +71,8 @@ void task_50hz(struct global_data_ty * p_global_data) {
     float dt = start_time == 0 ? 0.02 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
 
-    height_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
-    xy_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    // height_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    // xy_speed_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
    
 }
 
@@ -81,15 +81,15 @@ void task_20hz(struct global_data_ty * p_global_data) {
     float dt = start_time == 0 ? 0.05 : (sysctl_get_time_us() - start_time) / 1000000.0;
     start_time = sysctl_get_time_us();
 
-    VL53L1X_Read();    /*激光测距任务*/
-    if(global_data.flags.use_motioncap_data)
-        height_fusion_20_mc(dt);
-    else
-        height_fusion_20_vl(dt);
-    height_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
-    xy_position_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    // VL53L1X_Read();    /*激光测距任务*/
+    // if(global_data.flags.use_motioncap_data)
+    //     height_fusion_20_mc(dt);
+    // else
+    //     height_fusion_20_vl(dt);
+    // height_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
+    // xy_position_ctrl(&(p_global_data->body_ctrl), &attitude_data, &(p_global_data->remote_ctrl), dt);
 
-    key_calibration(0);
+    key_calibration(0);//按键校准
 }
 
 void task_10hz(struct global_data_ty * p_global_data) {

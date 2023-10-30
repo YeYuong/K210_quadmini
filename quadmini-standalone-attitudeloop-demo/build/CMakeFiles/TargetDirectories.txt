@@ -1,6 +1,6 @@
-/home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles/rebuild_cache.dir
-/home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles/edit_cache.dir
-/home/yyl/K210-project/quadmini-throughring-demo/build/CMakeFiles/quadmini.dir
-/home/yyl/K210-project/quadmini-throughring-demo/build/lib/CMakeFiles/rebuild_cache.dir
-/home/yyl/K210-project/quadmini-throughring-demo/build/lib/CMakeFiles/edit_cache.dir
-/home/yyl/K210-project/quadmini-throughring-demo/build/lib/CMakeFiles/kendryte.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/CMakeFiles/rebuild_cache.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/CMakeFiles/edit_cache.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/CMakeFiles/quadmini.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/lib/CMakeFiles/rebuild_cache.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/lib/CMakeFiles/edit_cache.dir
+/home/yyl/K210_quadmini/quadmini-standalone-attitudeloop-demo/build/lib/CMakeFiles/kendryte.dir

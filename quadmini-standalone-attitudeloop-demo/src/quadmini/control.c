@@ -145,19 +145,19 @@ void flight_status_control(struct ctrl_data_ty * body_ctrl, struct remote_ctrl_t
 			lock_motor();
 		}
 	} else if (body_ctrl->flight_status == FLIGHT_ACCELERATE) {	/* 电机加速至悬停油门 */
-        if(global_data.flags.ready_to_takeoff + global_data.flags.use_motioncap_data <= 0) // 检测起飞条件
-        { // imu初始化失败时ready_to_takeoff为-1，即使有动捕也不允许起飞；光流和TOF故障时无法直接起飞，若动捕信息接入则允许起飞
-            global_data.flags.use_commander = 0;
-			body_ctrl->flight_status = FLIGHT_LOCKED;
-            return;
-        }
+        // if(global_data.flags.ready_to_takeoff + global_data.flags.use_motioncap_data <= 0) // 检测起飞条件
+        // { // imu初始化失败时ready_to_takeoff为-1，即使有动捕也不允许起飞；光流和TOF故障时无法直接起飞，若动捕信息接入则允许起飞
+        //     global_data.flags.use_commander = 0;
+		// 	body_ctrl->flight_status = FLIGHT_LOCKED;
+        //     return;
+        // }
 		body_ctrl->thr += body_ctrl->thr_hover / (1.0 /*秒*/ / dt);
 		rgb_set(0, (uint8_t)(int)body_ctrl->thr, 0);
 		if (body_ctrl->thr >= body_ctrl->thr_hover) {
 			body_ctrl->thr = body_ctrl->thr_hover;
 			body_ctrl->flight_status = FLIGHT_TAKING_OFF;
-        	body_ctrl->x_posi_ctrl.expect_x_posi = getBodyPosition(0);
-        	body_ctrl->y_posi_ctrl.expect_y_posi = getBodyPosition(1);
+        	// body_ctrl->x_posi_ctrl.expect_x_posi = getBodyPosition(0);
+        	// body_ctrl->y_posi_ctrl.expect_y_posi = getBodyPosition(1);
 			rgb_set(15, 20, 15);
 		}
 		if (remote_ctrl->lock_btn == 1) {
@@ -167,11 +167,11 @@ void flight_status_control(struct ctrl_data_ty * body_ctrl, struct remote_ctrl_t
 	} else if (body_ctrl->flight_status == FLIGHT_TAKING_OFF) {	/* 起飞：启动角度环、高度速度环，直到高度为10cm */
 		// body_ctrl->angle_ctrl.expect_angle.x = 0.0;
 		// body_ctrl->angle_ctrl.expect_angle.y = 0.0;
-		body_ctrl->height_speed_ctrl.expect_height_speed = 0.16;
-		if (ob_height >= 0.2) {
-			body_ctrl->height_ctrl.expect_height = 0.25;
-			body_ctrl->flight_status = FLIGHT_FLYING;
-		}
+		// body_ctrl->height_speed_ctrl.expect_height_speed = 0.16;
+		// if (ob_height >= 0.2) {
+		// 	body_ctrl->height_ctrl.expect_height = 0.25;
+		// 	body_ctrl->flight_status = FLIGHT_FLYING;
+		// }
 		if (remote_ctrl->lock_btn == 1) {
 			body_ctrl->flight_status = FLIGHT_LOCKED;
 			lock_motor();
@@ -186,13 +186,13 @@ void flight_status_control(struct ctrl_data_ty * body_ctrl, struct remote_ctrl_t
 			lock_motor();
 		}
 	} else if (body_ctrl->flight_status == FLIGHT_LANDING) {	/* 降落：启动高度速度环缓慢下降，小于5cm落下 */
-		body_ctrl->height_speed_ctrl.expect_height_speed = -0.25;
-		if ( (remote_ctrl->lock_btn == 1) || (ob_height <= 0.05) || (getTOFHeight() <= 0.05 && getTOFHeight() > 0.0) || (global_data.flags.use_motioncap_data == 0 && getTOFHeight() <= 0.05)) {
+		// body_ctrl->height_speed_ctrl.expect_height_speed = -0.25;
+		// if ( (remote_ctrl->lock_btn == 1) || (ob_height <= 0.05) || (getTOFHeight() <= 0.05 && getTOFHeight() > 0.0) || (global_data.flags.use_motioncap_data == 0 && getTOFHeight() <= 0.05)) {
 			body_ctrl->flight_status = FLIGHT_LOCKED;
 			lock_motor();
 			ctrl_reset(&global_data.body_ctrl);
 			rgb_set(5,10,5);
-		}
+		// }
 	}
 }
 
@@ -251,7 +251,7 @@ void angle_ctrl(struct ctrl_data_ty * body_ctrl,struct data_fusion_ty * body_dat
 {
 	struct angle_ctrl_ty * angle_ctrl = &(body_ctrl->angle_ctrl);
 
-	if(body_ctrl->flight_status < FLIGHT_TAKING_OFF)
+	if(body_ctrl->flight_status < FLIGHT_TAKING_OFF)//不是起飞状态，角度环不会启动
 	{
 		angle_ctrl->angle_err_i.x = 0;
 		angle_ctrl->angle_err_i.y = 0;
@@ -262,12 +262,17 @@ void angle_ctrl(struct ctrl_data_ty * body_ctrl,struct data_fusion_ty * body_dat
 		return;
 	}
 
-	//获取角度期望值
+	//获取角度期望值,由遥控器进行期望值给定，同时限制其死区
 	if(body_ctrl->flight_status >= FLIGHT_TAKING_OFF)
 	{
-		angle_ctrl->expect_angle.x = LIMIT_R(body_ctrl->y_speed_ctrl.out_roll, -20.0, 20.0);
-		angle_ctrl->expect_angle.y = LIMIT_R(body_ctrl->x_speed_ctrl.out_pitch, -20.0, 20.0);
+		if ( fabs(remote_ctrl->pitch) < 0.01)    remote_ctrl->pitch = 0.0;
+		if ( fabs(remote_ctrl->roll) < 0.01)     remote_ctrl->roll = 0.0;
+		angle_ctrl->expect_angle.x = remote_ctrl->pitch * 40;
+		angle_ctrl->expect_angle.y = remote_ctrl->roll * 40;
+		// angle_ctrl->expect_angle.x = LIMIT_R(body_ctrl->y_speed_ctrl.out_roll, -20.0, 20.0);
+		// angle_ctrl->expect_angle.y = LIMIT_R(body_ctrl->x_speed_ctrl.out_pitch, -20.0, 20.0);
 	}
+	if ( fabs(remote_ctrl->yaw) < 0.005 )   remote_ctrl->yaw = 0.0;
 	angle_ctrl->expect_angle.z = attitude_data.start_yaw += remote_ctrl->yaw * 100.0 * dt;
 
 	//计算角度误差
@@ -308,7 +313,7 @@ void height_ctrl(struct ctrl_data_ty * body_ctrl,struct data_fusion_ty * body_da
 	struct height_ctrl_ty * height_ctrl = &(body_ctrl->height_ctrl);
 	_height_est = getBodyPosition(2);
 
-	if(body_ctrl->flight_status != FLIGHT_FLYING)
+	if(body_ctrl->flight_status != FLIGHT_FLYING)//不是飞行状态，高度环不会启动
 	{
 		height_ctrl->height_err_i = 0;
 		return;
