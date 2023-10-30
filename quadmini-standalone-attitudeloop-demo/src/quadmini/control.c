@@ -93,6 +93,7 @@ void ctrl_reset(struct ctrl_data_ty * ctrl_data)
 	ctrl_data->out_roll = 0.0;
 	ctrl_data->out_pitch = 0.0;
 	ctrl_data->out_yaw = 0.0;
+	ctrl_data->flight_status = FLIGHT_LOCKED;
 	OpFlowDataClear();
 }
 
